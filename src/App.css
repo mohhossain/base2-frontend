@@ -1,4 +1,52 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+pre{
+  background-color: rgba(186, 171, 171, 0.32);
+  color: rgb(0, 65, 156);
+  padding: 10px;
+  border-radius: 5px;
 }
+
+/* container for the editor text area */
+.CodeMirror {
+  width: 100%;
+  height: auto;
+  min-height: 15vw; 
+  font-size: 1.2rem;
+  
+  
+
+  @media (max-width: 700px) {
+    font-size: 1rem;
+    min-height: 200px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 750px;
+    padding: 5px;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 540px;
+  }
+}
+/* 
+.post-container{
+
+} */
+
 

@@ -92,9 +92,13 @@ function Editor() {
 
   return (
     <div>
-      <ReactQuill ref={quillRef} modules={modules} />
+      <ReactQuill
+        className="CodeMirror container"
+        ref={quillRef}
+        modules={modules}
+      />
       <button onClick={handleSubmit}>Submit</button>
-      <div>{html ? parse(html) : null}</div>
+      <div className="container">{html ? parse(html) : null}</div>
     </div>
   );
 }
