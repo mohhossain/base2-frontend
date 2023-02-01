@@ -22,45 +22,9 @@ function Editor() {
   const [content, setContent] = useState(null);
   const [html, setHtml] = useState(null);
   const quillRef = useRef(null);
-  const [showModal, setShowModal] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const uploadFile = (file) => {
-    const params = {
-      ACL: "public-read",
-      Body: file,
-      Bucket: S3_BUCKET,
-      Key: file.name,
-    };
-
-    myBucket
-      .putObject(params)
-      //   .on("httpUploadProgress", (evt) => {
-      //     setProgress(Math.round((evt.loaded / evt.total) * 100));
-      //   })
-      .send((err) => {
-        if (err) console.log(err);
-        else {
-          myBucket.getSignedUrl(
-            "getObject",
-            { Bucket: S3_BUCKET, Key: file.name },
-            (err, url) => {
-              if (err) console.log(err);
-              else {
-                console.log(url);
-                setImageUrl(url);
-              }
-            }
-          );
-        }
-      });
-  };
-
-  const imageHandler = (url) => {
+  const imageHandler = () => {
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");

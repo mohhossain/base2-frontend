@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState } from "react";
 import Editor from "./Editor";
-import UploadImageToS3WithNativeSdk from "./UploadImageToS3WithNativeSdk";
 
 function App() {
   return (
