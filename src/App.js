@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Editor />
-      <UploadImageToS3WithNativeSdk></UploadImageToS3WithNativeSdk>
+      {/* <UploadImageToS3WithNativeSdk></UploadImageToS3WithNativeSdk> */}
     </div>
   );
 }

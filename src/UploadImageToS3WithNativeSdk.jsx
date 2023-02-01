@@ -15,10 +15,12 @@ const myBucket = new AWS.S3({
     region: REGION,
 })
 
-const UploadImageToS3WithNativeSdk = () => {
+const UploadImageToS3WithNativeSdk = ({image, setUrl}) => {
 
     const [progress , setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
+
+    const [imageUrl, setImageUrl] = useState(null);
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -39,14 +41,24 @@ const UploadImageToS3WithNativeSdk = () => {
             })
             .send((err) => {
                 if (err) console.log(err)
+                else {
+                myBucket.getSignedUrl('getObject', {Bucket: S3_BUCKET, Key: file.name}, (err, url) => {
+                    if (err) console.log(err)
+                    else {
+                        console.log(url)
+                        setImageUrl(url)
+                    }
+                })
+            }
             })
     }
 
 
-    return <div>
+    return
+    <div>
         <div>Native SDK File Upload Progress is {progress}%</div>
         <input type="file" onChange={handleFileInput}/>
-        <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+        <button onClick={() => uploadFile(image)}> Upload to S3</button>
     </div>
 }
 
