@@ -1,4 +1,134 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+pre{
+  background-color: rgba(186, 171, 171, 0.32);
+  color: rgb(0, 65, 156);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* container for the editor text area */
+.CodeMirror {
+  width: 100%;
+  height: auto;
+  /* min-height: 15vw;  */
+  font-size: 1.2rem;
+  
+  
+
+  @media (max-width: 700px) {
+    font-size: 1rem;
+    min-height: 200px;
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 650px;
+    padding: 5px;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 440px;
+  }
+}
+/* 
+.post-container{
+
+} */
+
+/* submit button in the center */
+.submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 9px;
+  border: none;
+  background-color: #c2f74e;
+  color: rgb(54, 64, 54);
+  max-width: 760px;
+  width: 100%;
+  
+}
+
+/* add box shadow on hover */
+.submit-button:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* increase width of the text box */
+
+.ql-editor{
+  min-height: 200px;
+}
+
+/* align the title input box with CodeMirror */
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 9px;
+  border: 1px solid #b0a7a7;
+  /* background-color: #c2f74e; */
+  color: rgb(54, 64, 54);
+  max-width: 740px;
+  width: 100%;
+}
+
+.login-container{
+  max-width: 1200px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  /* rouded border */
+  border-radius: 15px;
+  /* border: 1px solid #b0a7a7; */
+  border: none;
+  /* drop shadow */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  /* add background color to be linear gradient with less opacity of .5 */
+  background: linear-gradient(41deg, rgba(255, 99, 164, 0.389), rgba(16, 217, 248, 0.404));
+  /* backdrop-filter: blur(225px); */
+  justify-content: space-between;
+  padding: 0;
+}
+
+@media (max-width: 991px) {
+  .login-container {
+    max-width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .login-container {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 100%;
+    max-width: 90%;
+    height: auto;
+  }
 }
 

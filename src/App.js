@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState } from "react";
 import Editor from "./Editor";
+import LoginSignUp from "./LoginSignUp";
 
 function App() {
   return (
     <div className="App">
-      <Editor />
-      {/* <UploadImageToS3WithNativeSdk></UploadImageToS3WithNativeSdk> */}
+      <LoginSignUp />
+      {/* <Editor /> */}
     </div>
   );
 }

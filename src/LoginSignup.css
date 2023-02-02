@@ -1,0 +1,141 @@
+html,
+body {
+    min-height: 90vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* justify-content: center; */
+    width: 50%;
+    margin-left: 0px;
+    /* background-color: white; */
+
+    padding: 50px;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 80%;
+    }
+}
+
+hr{
+    width: 30%;
+    margin: 10px 0px;
+
+    /* padding: 10px; */
+    border: 2px solid rgba(255, 99, 164, 0.389);
+}
+
+/* make the label font smaller */
+label {
+    font-size: .8rem;
+    font-weight: bolder;
+    /* margin-top: 10px; */
+    /* padding-top: 10px; */
+
+}
+
+p{
+    font-size: .8rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    /* width: 100%; */
+    /* font-size: 1.2rem; */
+    width: 100%;
+    padding: 10px;
+    margin: 1px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    /* font-size: 16px; */
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+}
+.signUpClass{
+    margin-top: 20px;
+
+}
+button{
+    /* background-color: rgba(255, 99, 164, 0.389); */
+    /* linear gradient background */
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    background: linear-gradient(41deg, rgba(255, 99, 164, 0.569), rgba(16, 217, 248, 0.577));
+}
+/* drop shadow on hover */
+button:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+/* vertically center the form */
+/* form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+} */
+
+/* 
+label,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+} */
+
+.form-container {
+    border-radius: 15px 0px 0px 15px;
+    /* border-right: none; */
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: white;
+    /* margin: 50px auto; */
+}
+
+strong {
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    font-size: .6rem;
+    font-weight: light;
+    margin: 2px;
+}
