@@ -92,12 +92,42 @@ function Editor() {
 
   return (
     <div>
-      <ReactQuill
-        className="CodeMirror container"
-        ref={quillRef}
-        modules={modules}
-      />
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="container">
+        {/* <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="CodeMirror title"
+            placeholder="This is the title....."
+            required
+          ></input>
+          <ReactQuill
+            className="CodeMirror"
+            ref={quillRef}
+            modules={modules}
+            placeholder="Type your content here..."
+          />
+          <input type="submit" className="submit-button">
+            Submit
+          </input>
+        </form> */}
+        <form>
+          <input
+            type="text"
+            name="name"
+            className="CodeMirror title"
+            placeholder="This is the title....."
+            required
+          />
+          <ReactQuill
+            className="CodeMirror"
+            ref={quillRef}
+            modules={modules}
+            placeholder="Type your content here..."
+          />
+          <input type="submit" value="Submit" className="submit-button" />
+        </form>
+      </div>
+
       <div className="container">{html ? parse(html) : null}</div>
     </div>
   );

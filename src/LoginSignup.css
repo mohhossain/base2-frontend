@@ -1,0 +1,118 @@
+html,
+body {
+    min-height: 90vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* justify-content: center; */
+    width: 50%;
+    margin-left: 0px;
+    /* background-color: white; */
+
+    padding: 50px;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 80%;
+    }
+}
+
+hr{
+    width: 30%;
+    margin: 10px auto;
+
+    /* padding: 10px; */
+    border: 2px solid rgba(255, 99, 164, 0.389);
+}
+
+/* make the label font smaller */
+label {
+    font-size: .8rem;
+    font-weight: bolder;
+    /* margin-top: 10px; */
+    /* padding-top: 10px; */
+
+}
+
+p{
+    font-size: .8rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    /* width: 100%; */
+    /* font-size: 1.2rem; */
+    width: 100%;
+    padding: 10px;
+    margin: 1px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    /* font-size: 16px; */
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+
+}
+
+button{
+    background-color: rgba(255, 99, 164, 0.389);
+}
+
+/* vertically center the form */
+/* form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+} */
+
+/* 
+label,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+} */
+
+.form-container {
+    border-radius: 15px 0px 0px 15px;
+    /* border-right: none; */
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: white;
+    /* margin: 50px auto; */
+}
