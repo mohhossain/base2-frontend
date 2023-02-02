@@ -139,3 +139,32 @@ strong {
     font-weight: light;
     margin: 2px;
 }
+
+
+.content{
+    width: 650px;
+    /* max-width: 650px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    max-width: 1200px;
+    height: 100%;
+    min-height: 800px;
+    display: flex;
+    flex-direction: row;
+    /* rouded border */
+    border-radius: 15px;
+    /* border: 1px solid #b0a7a7; */
+    border: none;
+    /* drop shadow */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    /* add background color to be linear gradient with less opacity of .5 */
+    background: linear-gradient(41deg, rgba(255, 99, 164, 0.389), rgba(16, 217, 248, 0.404));
+    /* backdrop-filter: blur(225px); */
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 0;
+}

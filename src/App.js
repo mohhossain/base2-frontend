@@ -6,7 +6,9 @@ import LoginSignUp from "./LoginSignUp";
 function App() {
   return (
     <div className="App">
-      <LoginSignUp />
+      <div className="l-container">
+        <LoginSignUp />
+      </div>
       {/* <Editor /> */}
     </div>
   );

@@ -144,7 +144,7 @@ const LoginSignUp = () => {
         </form>
       </div>
 
-      <div>
+      <div className="content">
         <h1>HEllo</h1>
       </div>
     </div>
