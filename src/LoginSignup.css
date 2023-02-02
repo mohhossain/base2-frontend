@@ -23,7 +23,7 @@ form {
 
 hr{
     width: 30%;
-    margin: 10px auto;
+    margin: 10px 0px;
 
     /* padding: 10px; */
     border: 2px solid rgba(255, 99, 164, 0.389);
@@ -57,13 +57,24 @@ button {
     /* font-size: 16px; */
     border: 1px solid #ccc;
     margin-bottom: 15px;
+    cursor: pointer;
 
 }
+.signUpClass{
+    margin-top: 20px;
 
+}
 button{
-    background-color: rgba(255, 99, 164, 0.389);
+    /* background-color: rgba(255, 99, 164, 0.389); */
+    /* linear gradient background */
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    background: linear-gradient(41deg, rgba(255, 99, 164, 0.569), rgba(16, 217, 248, 0.577));
 }
-
+/* drop shadow on hover */
+button:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
 /* vertically center the form */
 /* form{
     display: flex;
@@ -115,4 +126,16 @@ button:hover {
     justify-content: center;
     background-color: white;
     /* margin: 50px auto; */
+}
+
+strong {
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    font-size: .6rem;
+    font-weight: light;
+    margin: 2px;
 }

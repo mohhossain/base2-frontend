@@ -104,9 +104,31 @@ pre{
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   /* add background color to be linear gradient with less opacity of .5 */
   background: linear-gradient(41deg, rgba(255, 99, 164, 0.389), rgba(16, 217, 248, 0.404));
-  backdrop-filter: blur(225px);
+  /* backdrop-filter: blur(225px); */
   justify-content: space-between;
   padding: 0;
 }
 
+@media (max-width: 991px) {
+  .login-container {
+    max-width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .login-container {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 100%;
+    max-width: 90%;
+    height: auto;
+  }
+}
 
