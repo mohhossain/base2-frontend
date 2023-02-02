@@ -36,11 +36,7 @@ const LoginSignUp = () => {
     } else {
       console.log(formData.profile_picture);
       axios
-        .post("http://127.0.0.1:3000/signup", formData, {
-          headers: {
-            enctype: "multipart/form-data",
-          },
-        })
+        .post("http://127.0.0.1:3000/signup", formData)
         .then((res) => {
           console.log(res);
         })
@@ -101,8 +97,10 @@ const LoginSignUp = () => {
           {!isLogin && (
             <div>
               <label htmlFor="profilePicture">Profile Picture</label>
+              {/* only accepts image */}
               <input
                 type="file"
+                accept="image/*"
                 id="profilePicture"
                 onChange={(e) => setProfilePicture(e.target.files[0])}
               />
