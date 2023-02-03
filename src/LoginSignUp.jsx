@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./LoginSignup.css";
 import axios from "axios";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
 
 const LoginSignUp = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -53,6 +54,8 @@ const LoginSignUp = () => {
   return (
     <div className="container login-container">
       <div className="form-container">
+        {/* <h1 style={{fontSize: "5vw", margin: "0px"}}>{"</>"}</h1> */}
+        {/* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Close_tag_icon.svg/1200px-Close_tag_icon.svg.png"></img> */}
         <form onSubmit={handleSubmit} enctype="multipart/form-data">
           {!isLogin && (
             <>
@@ -96,9 +99,10 @@ const LoginSignUp = () => {
           </div>
           {!isLogin && (
             <div>
-              <label htmlFor="profilePicture">Profile Picture</label>
-              {/* only accepts image */}
+              <label>Profile Picture</label>
+              <br></br>
               <input
+                className="profilePicture"
                 type="file"
                 accept="image/*"
                 id="profilePicture"
@@ -145,7 +149,13 @@ const LoginSignUp = () => {
       </div>
 
       <div className="content">
-        <h1>HEllo</h1>
+        {/* <h1></h1> */}
+        <Player
+          autoplay
+          loop
+          src="https://assets2.lottiefiles.com/packages/lf20_iVPQC8jyX2.json"
+          style={{ height: "500px", width: "500px" }}
+        ></Player>
       </div>
     </div>
   );
