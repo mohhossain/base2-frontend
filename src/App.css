@@ -4,6 +4,9 @@
   justify-content: center;
 } */
 /* a dimmer app background color */
+html{
+  /* background-color: #f1f1f1; */
+}
 .App{
   background-color: #f1f1f1;
 }
