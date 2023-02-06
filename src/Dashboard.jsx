@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 
+import { UserContext } from "./context/UserContext";
+
 function Dashboard() {
-  let user = {
-    username: "amandaKlaasen",
-    email: "amanda@microsoft.com",
-    bio: "I am a software engineer at Microsoft",
-    profile_picture:
-      "https://www.american.edu/uploads/profiles/large/Stephen_Kostyo_006arw.JPG",
-  };
+  const { user, setUser } = React.useContext(UserContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, []);
+
+  //   let user1 = {
+  //     username: "amandaKlaasen",
+  //     email: "amanda@microsoft.com",
+  //     bio: "I am a software engineer at Microsoft",
+  //     profile_picture:
+  //       "https://www.american.edu/uploads/profiles/large/Stephen_Kostyo_006arw.JPG",
+  //   };
   return (
     <div
       style={{
@@ -24,10 +32,10 @@ function Dashboard() {
         {/* <h1>Dashboard</h1> */}
         <div className="profile">
           <div className="intro">
-            <img id="profile-image" src={user.profile_picture} alt="profile" />
-            <h1>@{user.username}</h1>
+            <img id="profile-image" src={user?.profile_picture} alt="profile" />
+            <h1>@{user?.username}</h1>
             <p style={{ fontSize: "20px", color: "rgb(98, 98, 98)" }}>
-              {user.bio}
+              {user?.bio}
             </p>
           </div>
         </div>

@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import "./LoginSignup.css";
 import axios from "axios";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { UserContext } from "./context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignUp = () => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
   const [signUpClass, setSignUpClass] = useState("signUpClass");
   const [errors, setErrors] = useState([]);
+
+  const { user, setUser } = React.useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,12 +28,17 @@ const LoginSignUp = () => {
     }
     // formData.append("profile_picture", profilePicture);
     formData.append("username", username);
+    formData.append("name", name);
     if (isLogin) {
       console.log(email, password);
       axios
         .post("http://127.0.0.1:3000/login", formData)
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          localStorage.setItem("token", res.data.token);
+          setUser(res.data.user);
+
+          navigate("/profile");
         })
         .catch((error) => {
           setErrors(error.response.data.errors);
@@ -40,6 +51,10 @@ const LoginSignUp = () => {
         .post("http://127.0.0.1:3000/signup", formData)
         .then((res) => {
           console.log(res);
+          localStorage.setItem("token", res.data.token);
+          setUser(res.data.user);
+
+          navigate("/profile");
         })
         .catch((error) => {
           console.log(error);
@@ -62,6 +77,13 @@ const LoginSignUp = () => {
               <h1>Let's get you started..</h1>
               <hr></hr>
               <div>
+                <label htmlFor="name">Full name</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
