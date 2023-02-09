@@ -1,45 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Dashboard.css";
+import Post from "./Post";
 
 import { UserContext } from "./context/UserContext";
 
 function Dashboard() {
-  const { user, setUser } = React.useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  // add 5 random tech skills to the user
+  let skills = ["HTML", "CSS", "JavaScript", "React", "Node"];
+
+  // map the skills and return a p tag with the skill
+  let skillsList = skills.map((skill) => {
+    return <p>{skill}</p>;
+  });
 
   useEffect(() => {
     console.log(user);
   }, []);
 
-  //   let user1 = {
-  //     username: "amandaKlaasen",
-  //     email: "amanda@microsoft.com",
-  //     bio: "I am a software engineer at Microsoft",
-  //     profile_picture:
-  //       "https://www.american.edu/uploads/profiles/large/Stephen_Kostyo_006arw.JPG",
-  //   };
   return (
-    <div
-      style={{
-        backgroundColor: "#f1f1f1",
-        minHeight: "100vh",
-        minWidth: "100vw",
-        display: "flex",
-        justifyContent: "center",
-        // alignItems: "center",
-      }}
-    >
-      <div className="">
-        {/* <h1>Dashboard</h1> */}
-        <div className="profile">
-          <div className="intro">
-            <img id="profile-image" src={user?.profile_picture} alt="profile" />
-            <h1>@{user?.username}</h1>
-            <p style={{ fontSize: "20px", color: "rgb(98, 98, 98)" }}>
-              {user?.bio}
-            </p>
+    <div className="profile-container">
+      <div className="profile-info">
+        <div className="intro">
+          <img
+            className="profile-image"
+            src={user?.profile_picture}
+            alt="profile"
+          />
+          <div className="info">
+            <h2>{user?.name}</h2>
+            <p>@{user?.username}</p>
           </div>
         </div>
+        {/* add 20px margin */}
+        <h2>Bio</h2>
+        <h3>"{user?.bio} some texts go here"</h3>
+        <h2>Skills</h2>
+        <div className="skills">{skillsList}</div>
       </div>
+      <div className="profile-info"></div>
+
+      <Post
+        username="johndoe"
+        fullName="John Doe"
+        profilePicture="https://picsum.photos/200"
+        title="Hello World"
+        content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
+        date="2023-02-09"
+      />
     </div>
   );
 }

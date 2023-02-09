@@ -6,7 +6,8 @@ export const UserContext = createContext({});
 
 const useFetchUser = () => {
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  //   const token = localStorage.getItem("token");
   console.log(token);
 
   useEffect(() => {
@@ -24,7 +25,9 @@ const useFetchUser = () => {
         console.error(error);
       }
     };
-    fetchUser();
+    {
+      token && fetchUser();
+    }
   }, []);
 
   return [user, setUser];
