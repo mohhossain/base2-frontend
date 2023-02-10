@@ -114,11 +114,13 @@
 .skills p{
     /* bigger font size */
     cursor: pointer;
+    font-weight: 600;
     font-size: .8rem;
     padding: 5px 10px;
     margin: 2px 5px;
-    background-color: rgba(9, 49, 209, 0.242);
-    border-radius: 15px;
+    border: 1px solid rgba(184, 184, 184, 0.863);
+    /* background-color: rgba(9, 49, 209, 0.242); */
+    border-radius: 5px;
     color: rgba(87, 60, 60, 0.863);
 }
 

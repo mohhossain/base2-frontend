@@ -33,9 +33,9 @@ function Dashboard() {
           </div>
         </div>
         {/* add 20px margin */}
-        <h2>Bio</h2>
+        {/* <h2>Bio</h2> */}
         <h3>"{user?.bio} some texts go here"</h3>
-        <h2>Skills</h2>
+        {/* <h2>Skills</h2> */}
         <div className="skills">{skillsList}</div>
       </div>
       <div className="profile-info"></div>
@@ -44,9 +44,37 @@ function Dashboard() {
         username="johndoe"
         fullName="John Doe"
         profilePicture="https://picsum.photos/200"
-        title="Hello World"
+        title="This is a sample post card. This is a sample post card."
         content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
         date="2023-02-09"
+        skills={skills}
+      />
+      <Post
+        username="johndoe"
+        fullName="John Doe"
+        profilePicture="https://picsum.photos/200"
+        title="This is a sample post card. This is a sample post card."
+        content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
+        date="2023-02-09"
+        skills={skills}
+      />
+      <Post
+        username="johndoe"
+        fullName="John Doe"
+        profilePicture="https://picsum.photos/200"
+        title="This is a sample post card. This is a sample post card."
+        content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
+        date="2023-02-09"
+        skills={skills}
+      />
+      <Post
+        username="johndoe"
+        fullName="John Doe"
+        profilePicture="https://picsum.photos/200"
+        title="This is a sample post card. This is a sample post card."
+        content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
+        date="2023-02-09"
+        skills={skills}
       />
     </div>
   );
