@@ -35,6 +35,8 @@ function Editor() {
     input.onchange = () => {
       const file = input.files[0];
 
+      console.log("file name: " + file.name);
+
       const params = {
         ACL: "public-read",
         Body: file,
@@ -42,28 +44,33 @@ function Editor() {
         Key: file.name,
       };
 
-      myBucket
-        .putObject(params)
-        //   .on("httpUploadProgress", (evt) => {
-        //     setProgress(Math.round((evt.loaded / evt.total) * 100));
-        //   })
-        .send((err) => {
-          if (err) console.log(err);
-          else {
-            myBucket.getSignedUrl(
-              "getObject",
-              { Bucket: S3_BUCKET, Key: file.name },
-              (err, url) => {
-                if (err) console.log(err);
-                else {
-                  console.log("this is the url: " + url);
-                  setImageUrl(url);
-                  quillRef.current?.getEditor().insertEmbed(null, "image", url);
-                }
+      myBucket.putObject(params).send((err) => {
+        if (err) console.log(err);
+        else {
+          myBucket.getSignedUrl(
+            "getObject",
+            { Bucket: S3_BUCKET, Key: file.name },
+            (err, url) => {
+              if (err) console.log(err);
+              else {
+                console.log("this is the url: " + url);
+                console.log(
+                  "this is alternate url: " +
+                    `https://thebase2stuffs.s3.amazonaws.com/${file.name}`
+                );
+                setImageUrl(url);
+                quillRef.current
+                  ?.getEditor()
+                  .insertEmbed(
+                    null,
+                    "image",
+                    `https://thebase2stuffs.s3.amazonaws.com/${file.name}`
+                  );
               }
-            );
-          }
-        });
+            }
+          );
+        }
+      });
     };
   };
   //   react quill modules

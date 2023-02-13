@@ -128,3 +128,21 @@
 .skills p:hover{
     box-shadow: 0 1px 9px 0 rgba(31, 38, 135, 0.098);
 }
+
+.cover{
+    width: 50vw;
+    height: 200px;
+    /* add a background image url  */
+    background-color: rgb(255, 64, 64);
+}
+
+/* .cover img{ */
+    /* width: 50vw; */
+    /* fit to cover */
+    /* width: 100%; */
+    /* object-fit: cover; */
+    /* border-radius: 9px 9px 0px 0px; */
+/* } */
+
+/* make the cover lowered using z index */
+

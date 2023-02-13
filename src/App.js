@@ -8,6 +8,7 @@ import { UserContext } from "./context/UserContext";
 import { UserContextProvider } from "./context/UserContext";
 import axios from "axios";
 import Error from "./Error";
+import PostDetails from "./PostDetails";
 
 function App() {
   // get user and setUser from the UserContext\
@@ -23,6 +24,7 @@ function App() {
             <Route path="/profile" element={<Dashboard />} />
             <Route path="/editor" element={<Editor />} />
             {/* <Route path="/posts" element={}></Route> */}
+            <Route path="/posts/:id" element={<PostDetails />} />
           </>
         ) : (
           <>

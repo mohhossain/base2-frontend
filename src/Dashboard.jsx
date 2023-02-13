@@ -21,6 +21,9 @@ function Dashboard() {
   return (
     <div className="profile-container">
       <div className="profile-info">
+        {/* <div className="cover">
+          
+        </div> */}
         <div className="intro">
           <img
             className="profile-image"
@@ -39,8 +42,17 @@ function Dashboard() {
         <div className="skills">{skillsList}</div>
       </div>
       <div className="profile-info"></div>
+      {user?.questions.map((question) => {
+       
+        return <Post
+          question={question}
+          username={user.username}
+          profile_picture={user.profile_picture}
+          name={user.name}
+        />;
+      })}
 
-      <Post
+      {/* <Post
         username="johndoe"
         fullName="John Doe"
         profilePicture="https://picsum.photos/200"
@@ -75,7 +87,7 @@ function Dashboard() {
         content="This is a sample post card. This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card.This is a sample post card."
         date="2023-02-09"
         skills={skills}
-      />
+      /> */}
     </div>
   );
 }
