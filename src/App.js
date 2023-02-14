@@ -9,6 +9,8 @@ import { UserContextProvider } from "./context/UserContext";
 import axios from "axios";
 import Error from "./Error";
 import PostDetails from "./PostDetails";
+import Feed from "./Feed";
+import Navbar from "./Navbar";
 
 function App() {
   // get user and setUser from the UserContext\
@@ -17,10 +19,12 @@ function App() {
   console.log(user);
   return (
     <div className="App">
+      <Navbar></Navbar>
       {/* set up the routes */}
       <Routes>
         {user ? (
           <>
+            <Route path="/" element={<Feed />} />
             <Route path="/profile" element={<Dashboard />} />
             <Route path="/editor" element={<Editor />} />
             {/* <Route path="/posts" element={}></Route> */}

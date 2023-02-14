@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300&family=Encode+Sans:wght@300&family=Lato:wght@300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&family=Source+Code+Pro&display=swap');
+
+.q-detail{
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 60%; */
+}
+
+/* select the img inside q-detail class */
+.q-detail img{
+    width: auto;
+    max-height: 410px;
+    margin: 10px 0px 10px 0px;
+}

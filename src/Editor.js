@@ -5,6 +5,7 @@ import AWS from "aws-sdk";
 import parse from "html-react-parser";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import imageCompression from "browser-image-compression";
 
 const S3_BUCKET = "thebase2stuffs";
 const REGION = "us-east-1";
