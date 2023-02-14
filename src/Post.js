@@ -21,7 +21,11 @@ const Post = ({ username, name, profile_picture, question }) => {
       {/* <h1>Hello</h1> */}
       <div className="post-card">
         <div className="post-card-header">
-          <img src={profile_picture} className="post-card-profile-picture" />
+          <img
+            src={profile_picture}
+            className="post-card-profile-picture"
+            alt={name[0]}
+          />
           <div className="post-card-header-text">
             <div className="post-card-username">{name}</div>
             <div className="post-card-full-name">@{username}</div>

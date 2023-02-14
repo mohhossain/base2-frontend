@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { UserContext } from "./context/UserContext";
 import { BsPencilSquare } from "react-icons/bs";
@@ -7,6 +7,8 @@ import { SlLogin } from "react-icons/sl";
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -17,6 +19,11 @@ const Navbar = () => {
 
   const toggleProfileDropdown = () => {
     setIsProfileOpen(!isProfileOpen);
+  };
+
+  const signout = () => {
+    setUser(null);
+    localStorage.removeItem("token");
   };
 
   return (
@@ -65,16 +72,30 @@ const Navbar = () => {
 
                     <hr></hr>
 
-                    <button>
-                      <Link to="/profile">View Profile</Link>
+                    <button
+                      onClick={() => {
+                        navigate(`/profile`);
+                      }}
+                      style={{ color: "#fff" }}
+                    >
+                      View Profile
+                    </button>
+                    <button className="signout-button" onClick={signout}>
+                      Sign Out
                     </button>
                   </div>
-                  <Link to="/profile"></Link>
+                  {/* <Link to="/profile"></Link> */}
                 </div>
               </div>
             </>
           ) : (
-            <SlLogin className="create-icon" />
+            //   the login button if the user is not logged in
+            <SlLogin
+              className="create-icon"
+              onClick={() => {
+                navigate(`/login`);
+              }}
+            />
           )}
         </div>
         <div className="navbar-icons">

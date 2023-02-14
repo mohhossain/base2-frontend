@@ -32,7 +32,9 @@ function App() {
           </>
         ) : (
           <>
-            <Route path="/" element={<LoginSignUp />} />
+            <Route path="/" element={<Feed />} />
+            <Route path="/login" element={<LoginSignUp />} />
+            <Route path="/posts/:id" element={<PostDetails />} />
           </>
         )}
         <Route path="*" element={<Error />} />
