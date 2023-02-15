@@ -8,7 +8,6 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    
 }
 .profile{
     display: flex;
@@ -153,7 +152,6 @@
 }
 
 .create-icon{
-    /* font-size: 3rem; */
     font-size: 35px;
     background: none;
     border: none;
@@ -161,24 +159,22 @@
     cursor: pointer;
     margin-right: 20px;
     color: rgb(255, 255, 255);
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
     margin-right: 0px;
 }
 
 .navbar-drawer {
     position: absolute;
     top: 80px;
-    right: -200px;
-    display: none;
-    /* background-color: #5f0f0f; */
-    height: calc(100vh - 80px);
-    width: 200px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    transition: all 0.3s ease;
+    right: 0px;
+    display: block;
+    height: 95vh;
+    background-color: #f1f1f1;
+    width: 0px;
+    display: block;
+    align-items: center;
+    /* transition: all 0.3s fade; */
+    /* transition fade */
+    transition: width 0.2s ease-in-out;
     overflow-y: auto;
     z-index: 1;
 }
@@ -215,39 +211,20 @@
     
         .navbar-drawer.open {
             right: 0;
-            display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+            position: absolute;
+            display: block;
+            width: 250px;
+            /* background-color: #f1f1f1; */
         }
+
+        .navbar-drawer.open button{
+            padding: 5px;
+            margin: 0;
+            margin-bottom: 5px;
+            border-radius: 15px;
+        } 
     
         .hidden {
             display: none;
-        }
-    
-        @media screen and (max-width: 960px) {
-    
-
-            .navbar-drawer {
-                position: fixed;
-                top: 80px;
-                right: -200px;
-                background-color: #f1f1f1;
-                height: calc(100vh - 80px);
-                width: 200px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: all 0.3s ease;
-                overflow-y: auto;
-                z-index: 1;
-            }
-    
-            .navbar-drawer a {
-                color: #000;
-                text-decoration: none;
-                margin: 10px 0;
-            }
         }
     }

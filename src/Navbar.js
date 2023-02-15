@@ -99,14 +99,44 @@ const Navbar = () => {
           )}
         </div>
         <div className="navbar-icons">
-          <button onClick={toggleDrawer} className="navbar-icon">
-            &#9776;
-          </button>
+          {user ? (
+            <button onClick={toggleDrawer} className="navbar-icon">
+              &#9776;
+            </button>
+          ) : (
+            <SlLogin
+              className="create-icon"
+              onClick={() => {
+                navigate(`/login`);
+              }}
+            />
+          )}
         </div>
       </div>
       <div className={`navbar-drawer ${isOpen ? "open" : ""}`}>
-        <a href="/profile">Profile</a>
-        <a href="/editor">Create Post</a>
+        {/* <a href="/profile">Profile</a>
+        <a href="/editor">Create Post</a> */}
+        <div style={{ padding: "15px" }} className="profile">
+          <img className="profile-picture" src={user?.profile_picture} />
+          <div className="profile-info-text">
+            <h4>{user?.name}</h4>
+            <p>@{user?.username}</p>
+          </div>
+
+          <hr></hr>
+
+          <button
+            onClick={() => {
+              navigate(`/profile`);
+            }}
+            style={{ color: "#fff" }}
+          >
+            View Profile
+          </button>
+          <button className="signout-button" onClick={signout}>
+            Sign Out
+          </button>
+        </div>
       </div>
     </nav>
   );
