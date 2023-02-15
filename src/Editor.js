@@ -4,6 +4,8 @@ import ReactQuill from "react-quill";
 import AWS from "aws-sdk";
 import parse from "html-react-parser";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
+import imageCompression from "browser-image-compression";
 
 const S3_BUCKET = "thebase2stuffs";
 const REGION = "us-east-1";
@@ -23,6 +25,7 @@ function Editor() {
   const [html, setHtml] = useState(null);
   const quillRef = useRef(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [title, setTitle] = useState(null);
 
   const imageHandler = () => {
     const input = document.createElement("input");
@@ -33,6 +36,8 @@ function Editor() {
     input.onchange = () => {
       const file = input.files[0];
 
+      console.log("file name: " + file.name);
+
       const params = {
         ACL: "public-read",
         Body: file,
@@ -40,28 +45,33 @@ function Editor() {
         Key: file.name,
       };
 
-      myBucket
-        .putObject(params)
-        //   .on("httpUploadProgress", (evt) => {
-        //     setProgress(Math.round((evt.loaded / evt.total) * 100));
-        //   })
-        .send((err) => {
-          if (err) console.log(err);
-          else {
-            myBucket.getSignedUrl(
-              "getObject",
-              { Bucket: S3_BUCKET, Key: file.name },
-              (err, url) => {
-                if (err) console.log(err);
-                else {
-                  console.log("this is the url: " + url);
-                  setImageUrl(url);
-                  quillRef.current?.getEditor().insertEmbed(null, "image", url);
-                }
+      myBucket.putObject(params).send((err) => {
+        if (err) console.log(err);
+        else {
+          myBucket.getSignedUrl(
+            "getObject",
+            { Bucket: S3_BUCKET, Key: file.name },
+            (err, url) => {
+              if (err) console.log(err);
+              else {
+                console.log("this is the url: " + url);
+                console.log(
+                  "this is alternate url: " +
+                    `https://thebase2stuffs.s3.amazonaws.com/${file.name}`
+                );
+                setImageUrl(url);
+                quillRef.current
+                  ?.getEditor()
+                  .insertEmbed(
+                    null,
+                    "image",
+                    `https://thebase2stuffs.s3.amazonaws.com/${file.name}`
+                  );
               }
-            );
-          }
-        });
+            }
+          );
+        }
+      });
     };
   };
   //   react quill modules
@@ -83,39 +93,45 @@ function Editor() {
     []
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("clicked");
     setContent(quillRef.current.getEditor().getText());
     console.log(quillRef.current.getEditor().root.innerHTML);
     setHtml(quillRef.current.getEditor().root.innerHTML);
+
+    // make a post request to the server
+    axios
+      .post(
+        "http://localhost:3000/post",
+        {
+          title,
+          content: quillRef.current.getEditor().root.innerHTML,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   return (
     <div>
       <div className="container">
-        {/* <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="CodeMirror title"
-            placeholder="This is the title....."
-            required
-          ></input>
-          <ReactQuill
-            className="CodeMirror"
-            ref={quillRef}
-            modules={modules}
-            placeholder="Type your content here..."
-          />
-          <input type="submit" className="submit-button">
-            Submit
-          </input>
-        </form> */}
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
             className="CodeMirror title"
             placeholder="This is the title....."
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
             required
           />
           <ReactQuill
