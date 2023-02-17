@@ -109,6 +109,7 @@ strong {
     min-height: 80vh;
     display: flex;
     flex-direction: row;
+    margin-top: 40px;
     /* rouded border */
     border-radius: 15px;
     /* border: 1px solid #b0a7a7; */
@@ -124,7 +125,7 @@ strong {
 }
 
 .l-container {
-  min-height: 100vh;
+  min-height: 80vh;
   /* width: 70vw; */
   display: flex;
   align-items: center;

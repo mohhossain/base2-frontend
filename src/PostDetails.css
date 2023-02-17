@@ -8,7 +8,15 @@
 
 /* select the img inside q-detail class */
 .q-detail img{
-    width: auto;
-    max-height: 410px;
+    max-width: 100%;
+    height: auto;
     margin: 10px 0px 10px 0px;
 }
+
+/* make the img responsive under 960px */
+@media screen and (max-width: 960px) {
+    .q-detail img{
+        max-width: 100%;
+    }
+}
+

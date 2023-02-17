@@ -6,6 +6,7 @@ import parse from "html-react-parser";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
+import "./Editor.css";
 
 const S3_BUCKET = "thebase2stuffs";
 const REGION = "us-east-1";
@@ -93,8 +94,7 @@ function Editor() {
     []
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     console.log("clicked");
     setContent(quillRef.current.getEditor().getText());
     console.log(quillRef.current.getEditor().root.innerHTML);
@@ -122,8 +122,8 @@ function Editor() {
 
   return (
     <div>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
+      <div className="input-container">
+        <form className="editor" >
           <input
             type="text"
             name="name"
@@ -140,9 +140,9 @@ function Editor() {
             modules={modules}
             placeholder="Type your content here..."
           />
-          <input type="submit" value="Submit" className="submit-button" />
         </form>
       </div>
+      <button onClick={handleSubmit} className="submit-button">Submit</button>
 
       <div className="container">{html ? parse(html) : null}</div>
     </div>
