@@ -7,7 +7,7 @@ function Feed() {
   const [questions, setQuestions] = useState([]);
   // fetch all the questions using useEffect from localhost:3000/questions
   useEffect(() => {
-    axios.get("http://localhost:3000/questions").then((res) => {
+    axios.get("http://127.0.0.1:3000/questions").then((res) => {
       console.log(res.data);
       setQuestions(res.data);
     });

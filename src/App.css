@@ -9,6 +9,15 @@ pre{
   color: rgb(0, 65, 156);
   padding: 10px;
   border-radius: 5px;
+  white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
 }
 
 /* container for the editor text area */
@@ -17,11 +26,21 @@ pre{
   height: auto;
   /* min-height: 15vw;  */
   font-size: 1.2rem;
+  border: none;
 
   @media (max-width: 700px) {
     font-size: 1rem;
     min-height: 200px;
   }
+}
+
+/* .ql-toolbar.ql-snow {
+  border: none !important;
+} */
+
+.ql-container.ql-snow{
+  border: none !important;
+  font-size: 1.2rem !important;
 }
 
 .container {
@@ -51,31 +70,7 @@ pre{
 } */
 
 /* submit button in the center */
-.submit-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px auto;
-  padding: 10px;
-  border-radius: 9px;
-  border: none;
-  background-color: #c2f74e;
-  color: rgb(54, 64, 54);
-  max-width: 760px;
-  width: 100%;
-  
-}
 
-/* add box shadow on hover */
-.submit-button:hover {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* increase width of the text box */
-
-.ql-editor{
-  min-height: 200px;
-}
 
 /* align the title input box with CodeMirror */
 .title {

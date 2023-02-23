@@ -6,6 +6,23 @@ import parse from "html-react-parser";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
+import "./Editor.css";
+import Modal from "react-modal";
+import PostDetails from "./PostDetails";
+import { useNavigate } from "react-router-dom";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    overflowY: "scroll",
+    maxHeight: "70vh",
+  },
+};
 
 const S3_BUCKET = "thebase2stuffs";
 const REGION = "us-east-1";
@@ -26,6 +43,11 @@ function Editor() {
   const quillRef = useRef(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [title, setTitle] = useState(null);
+
+  const navigate = useNavigate();
+
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const imageHandler = () => {
     const input = document.createElement("input");
@@ -93,14 +115,17 @@ function Editor() {
     []
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handlePreview = () => {
+    setHtml(quillRef.current.getEditor().root.innerHTML);
+    setIsOpen(true);
+  };
+
+  const handleSubmit = () => {
     console.log("clicked");
     setContent(quillRef.current.getEditor().getText());
     console.log(quillRef.current.getEditor().root.innerHTML);
     setHtml(quillRef.current.getEditor().root.innerHTML);
 
-    // make a post request to the server
     axios
       .post(
         "http://localhost:3000/post",
@@ -117,13 +142,36 @@ function Editor() {
       )
       .then((res) => {
         console.log(res);
+        navigate("/posts/" + res.data.id);
       });
   };
 
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
   return (
     <div>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
+      <div className="input-container">
+        <form className="editor">
+          <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={() => setIsOpen(false)}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+            <div className="modal-content">
+              {title && html ? (
+                <>
+                  <PostDetails html={html} title={title} />
+                </>
+              ) : (
+                <h3>Nothing to preview</h3>
+              )}
+            </div>
+          </Modal>
           <input
             type="text"
             name="name"
@@ -140,11 +188,16 @@ function Editor() {
             modules={modules}
             placeholder="Type your content here..."
           />
-          <input type="submit" value="Submit" className="submit-button" />
         </form>
+        <div className="post-control-buttons">
+          <button onClick={handleSubmit} className="submit-button">
+            Submit
+          </button>
+          <button onClick={handlePreview} className="preview-button">
+            Preview
+          </button>
+        </div>
       </div>
-
-      <div className="container">{html ? parse(html) : null}</div>
     </div>
   );
 }

@@ -100,9 +100,14 @@ const Navbar = () => {
         </div>
         <div className="navbar-icons">
           {user ? (
-            <button onClick={toggleDrawer} className="navbar-icon">
-              &#9776;
-            </button>
+            <>
+              <a href="/editor" className="navbar-icon create-post">
+                <BsPencilSquare />
+              </a>
+              <button onClick={toggleDrawer} className="navbar-icon">
+                &#9776;
+              </button>
+            </>
           ) : (
             <SlLogin
               className="create-icon"

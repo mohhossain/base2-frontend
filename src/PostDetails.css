@@ -3,12 +3,29 @@
 .q-detail{
     background-color: #fff;
     font-family: 'Roboto', sans-serif;
-    /* font-size: 60%; */
+    /* wrap text */
+    word-wrap: break-word;
 }
 
+.ql-syntax{
+    word-wrap: break-word !important;
+
+}
 /* select the img inside q-detail class */
 .q-detail img{
-    width: auto;
-    max-height: 410px;
+    max-width: 100%;
+    height: auto;
     margin: 10px 0px 10px 0px;
 }
+
+.q-detail p{
+    font-size: 1.2rem;
+}
+
+/* make the img responsive under 960px */
+@media screen and (max-width: 960px) {
+    .q-detail img{
+        max-width: 100%;
+    }
+}
+
