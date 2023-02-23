@@ -4,14 +4,16 @@ import { useLocation } from "react-router-dom";
 import parse from "html-react-parser";
 import "./PostDetails.css";
 
-function PostDetails() {
+function PostDetails({ html, title }) {
   const location = useLocation();
-  console.log(location.state.question);
+  // console.log(location.state.question);
   return (
     <div>
       <div className="container q-detail">
-        <h1>{location.state.question.title}</h1>
-        {parse(location.state.question.content)}
+        <h1>{title ? title : location.state.question.title}</h1>
+        {/* {parse(location.state.question.content)} */}
+
+        {html ? parse(html) : parse(location.state.question.content)}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const useFetchUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/me", {
+        const { data } = await axios.get("http://127.0.0.1:3000/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
