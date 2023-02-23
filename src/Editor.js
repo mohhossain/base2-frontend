@@ -9,6 +9,7 @@ import imageCompression from "browser-image-compression";
 import "./Editor.css";
 import Modal from "react-modal";
 import PostDetails from "./PostDetails";
+import { useNavigate } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -42,6 +43,8 @@ function Editor() {
   const quillRef = useRef(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [title, setTitle] = useState(null);
+
+  const navigate = useNavigate();
 
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -123,7 +126,6 @@ function Editor() {
     console.log(quillRef.current.getEditor().root.innerHTML);
     setHtml(quillRef.current.getEditor().root.innerHTML);
 
-    // make a post request to the server
     axios
       .post(
         "http://localhost:3000/post",
@@ -140,6 +142,7 @@ function Editor() {
       )
       .then((res) => {
         console.log(res);
+        navigate("/posts/" + res.data.id);
       });
   };
 
@@ -169,22 +172,6 @@ function Editor() {
               )}
             </div>
           </Modal>
-          {/* <Modal
-            isOpen={modalIsOpen}
-            className="preview-modal"
-            onRequestClose={() => setIsOpen(false)}
-            contentLabel="Example Modal"
-          >
-            <div className="modal-content">
-              {title && html ? (
-                <>
-                  <PostDetails html={html} title={title} />
-                </>
-              ) : (
-                <h3>Nothing to preview</h3>
-              )}
-            </div>
-          </Modal> */}
           <input
             type="text"
             name="name"
@@ -209,13 +196,8 @@ function Editor() {
           <button onClick={handlePreview} className="preview-button">
             Preview
           </button>
-          {/* <button onClick={handleSubmit} className="submit-button">
-            Delete
-          </button> */}
         </div>
       </div>
-
-      {/* <div className="container">{html ? parse(html) : null}</div> */}
     </div>
   );
 }

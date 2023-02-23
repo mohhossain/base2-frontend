@@ -13,7 +13,7 @@ const Post = ({ username, name, profile_picture, question }) => {
   const navigate = useNavigate();
 
   const handlePostClick = () => {
-    navigate(`/posts/${question.id}`, { state: { question: question } });
+    navigate(`/posts/${question.id}`);
   };
 
   return (
@@ -36,25 +36,11 @@ const Post = ({ username, name, profile_picture, question }) => {
           <div className="post-card-title" onClick={handlePostClick}>
             {title}
           </div>
-          {/* <div className="post-skills">
-            {skills.map((skill) => (
-              <p>#{skill}</p>
-            ))}
-          </div> */}
-
           <div>
             <p className="post-card-full-name">
               {question.reactions.length} reactions
             </p>
           </div>
-          {/* <div className="post-card-date">{date}</div> */}
-          {/* <div className="reactions">
-            <p>{"\u{1F44D}"}</p>
-            <p>&#10084;</p>
-            <p>{"\u{1F4A1}"}</p>
-            <p>{"\u{1F914}"}</p>
-            <p>{"\u{1F44E}"}</p>
-          </div> */}
         </div>
       </div>
     </div>
