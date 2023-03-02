@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import "./Dashboard.css";
-import Post from "./Post";
+import Post from "./post/Post";
 
 import { UserContext } from "./context/UserContext";
 
@@ -43,13 +43,14 @@ function Dashboard() {
       </div>
       <div className="profile-info"></div>
       {user?.questions.map((question) => {
-       
-        return <Post
-          question={question}
-          username={user.username}
-          profile_picture={user.profile_picture}
-          name={user.name}
-        />;
+        return (
+          <Post
+            question={question}
+            username={user.username}
+            profile_picture={user.profile_picture}
+            name={user.name}
+          />
+        );
       })}
 
       {/* <Post

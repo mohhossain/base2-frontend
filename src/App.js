@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useContext } from "react";
-import Editor from "./Editor";
+import Editor from "./editor/Editor";
 import LoginSignUp from "./LoginSignUp";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
@@ -8,8 +8,8 @@ import { UserContext } from "./context/UserContext";
 import { UserContextProvider } from "./context/UserContext";
 import axios from "axios";
 import Error from "./Error";
-import PostDetails from "./PostDetails";
-import Feed from "./Feed";
+import PostDetails from "./post/PostDetails";
+import Feed from "./post/Feed";
 import Navbar from "./Navbar";
 
 function App() {

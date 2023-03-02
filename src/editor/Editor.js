@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useRef, useMemo } from "react";
 import ReactQuill from "react-quill";
 import AWS from "aws-sdk";
-import parse from "html-react-parser";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import imageCompression from "browser-image-compression";
+// import imageCompression from "browser-image-compression";
 import "./Editor.css";
 import Modal from "react-modal";
-import PostDetails from "./PostDetails";
+import PostDetails from "../post/PostDetails";
 import { useNavigate } from "react-router-dom";
+import TagForm from "./TagForm";
 
 const customStyles = {
   content: {
@@ -43,6 +43,7 @@ function Editor() {
   const quillRef = useRef(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [title, setTitle] = useState(null);
+  const [tagsList, setTagsList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -121,6 +122,7 @@ function Editor() {
   };
 
   const handleSubmit = () => {
+    console.log(tagsList, "tagsList in editor js file  ");
     console.log("clicked");
     setContent(quillRef.current.getEditor().getText());
     console.log(quillRef.current.getEditor().root.innerHTML);
@@ -132,6 +134,7 @@ function Editor() {
         {
           title,
           content: quillRef.current.getEditor().root.innerHTML,
+          tags: tagsList,
         },
         {
           headers: {
@@ -165,7 +168,7 @@ function Editor() {
             <div className="modal-content">
               {title && html ? (
                 <>
-                  <PostDetails html={html} title={title} />
+                  <PostDetails html={html} title={title} tags={tagsList} />
                 </>
               ) : (
                 <h3>Nothing to preview</h3>
@@ -189,6 +192,7 @@ function Editor() {
             placeholder="Type your content here..."
           />
         </form>
+        <TagForm tagsList={tagsList} setTagsList={setTagsList}></TagForm>
         <div className="post-control-buttons">
           <button onClick={handleSubmit} className="submit-button">
             Submit

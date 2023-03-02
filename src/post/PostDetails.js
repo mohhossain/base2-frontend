@@ -4,8 +4,9 @@ import { useLocation } from "react-router-dom";
 import parse from "html-react-parser";
 import "./PostDetails.css";
 import axios from "axios";
+import TagChip from "../editor/TagChip";
 
-function PostDetails({ html, title }) {
+function PostDetails({ html, title, tags }) {
   const { id } = useParams();
 
   console.log(id);
@@ -35,6 +36,23 @@ function PostDetails({ html, title }) {
     <div>
       <div className="container q-detail">
         <h1>{question ? question.title : null}</h1>
+        <div className="tags">
+          {question?.tags?.map((tag) => {
+            return (
+              <span key={tag.id} className="tag">
+                <TagChip tag={tag.name}></TagChip>
+              </span>
+            );
+          })}
+
+          {tags?.map((tag) => {
+            return (
+              <span key={tag.id} className="tag">
+                <TagChip tag={tag}></TagChip>
+              </span>
+            );
+          })}
+        </div>
         {question?.content ? parse(question.content) : null}
       </div>
     </div>
