@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import "./PostDetails.css";
 import axios from "axios";
 import TagChip from "../editor/TagChip";
+import AuthorInfo from "./AuthorInfo";
 
 function PostDetails({ html, title, tags }) {
   const { id } = useParams();
@@ -33,7 +34,14 @@ function PostDetails({ html, title, tags }) {
   console.log(question);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <div></div>
       <div className="container q-detail">
         <h1>{question ? question.title : null}</h1>
         <div className="tags">
@@ -54,6 +62,7 @@ function PostDetails({ html, title, tags }) {
           })}
         </div>
         {question?.content ? parse(question.content) : null}
+      
       </div>
     </div>
   );

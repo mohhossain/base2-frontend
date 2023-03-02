@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
+import TagChip from "../editor/TagChip";
+
 const Post = ({ username, name, profile_picture, question }) => {
   const { title, content } = question;
   const date = new Date(question?.created_at);
@@ -37,6 +39,13 @@ const Post = ({ username, name, profile_picture, question }) => {
             {title}
           </div>
           <div>
+            {question?.tags?.map((tag) => {
+              return (
+                <span key={tag.id} className="tag">
+                  <TagChip tag={tag.name}></TagChip>
+                </span>
+              );
+            })}
             <p className="post-card-full-name">
               {question.reactions.length} reactions
             </p>

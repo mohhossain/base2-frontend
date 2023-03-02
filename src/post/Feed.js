@@ -3,17 +3,29 @@ import axios from "axios";
 import Post from "./Post";
 import "./Feed.css";
 
-function Feed() {
+function Feed({ tag }) {
   const [questions, setQuestions] = useState([]);
   // fetch all the questions using useEffect from localhost:3000/questions
   useEffect(() => {
-    axios.get("http://127.0.0.1:3000/questions").then((res) => {
-      console.log(res.data);
-      setQuestions(res.data);
-    });
+    // if tag starts with a #, remove the # and set it to a variable
+    if (tag && tag.startsWith("#")) {
+      tag = tag.slice(1);
+    }
+    {
+      tag
+        ? axios.get(`http://127.0.0.1:3000/tags/${tag}`).then((res) => {
+            console.log(res.data);
+            setQuestions(res.data);
+          })
+        : axios.get("http://127.0.0.1:3000/questions").then((res) => {
+            console.log(res.data);
+            setQuestions(res.data);
+          });
+    }
   }, []);
   return (
     <div className="profile-container">
+      {tag && <h1>{tag}</h1>}
       {questions &&
         questions.map((question) => {
           return (
