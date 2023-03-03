@@ -13,7 +13,13 @@ function PostDetails({ html, title, tags }) {
   console.log(id);
 
   const [question, setQuestion] = useState({});
-  const location = useLocation();
+  // const location = useLocation();
+  const date = new Date(question?.created_at);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
   useEffect(() => {
     if (id) {
@@ -43,7 +49,9 @@ function PostDetails({ html, title, tags }) {
     >
       <div></div>
       <div className="container q-detail">
+        <AuthorInfo author={question.user}></AuthorInfo>
         <h1>{question ? question.title : null}</h1>
+        <div className="post-details-date">{formattedDate}</div>
         <div className="tags">
           {question?.tags?.map((tag) => {
             return (
@@ -62,7 +70,6 @@ function PostDetails({ html, title, tags }) {
           })}
         </div>
         {question?.content ? parse(question.content) : null}
-      
       </div>
     </div>
   );

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "./Post";
 import "./Feed.css";
+import { useParams } from "react-router-dom";
 
-function Feed({ tag }) {
+function Feed() {
   const [questions, setQuestions] = useState([]);
+  const { tag } = useParams();
   // fetch all the questions using useEffect from localhost:3000/questions
   useEffect(() => {
     // if tag starts with a #, remove the # and set it to a variable
@@ -22,10 +24,10 @@ function Feed({ tag }) {
             setQuestions(res.data);
           });
     }
-  }, []);
+  }, [tag]);
   return (
     <div className="profile-container">
-      {tag && <h1>{tag}</h1>}
+      {tag && <h1 className="display-tag">#{tag}</h1>}
       {questions &&
         questions.map((question) => {
           return (

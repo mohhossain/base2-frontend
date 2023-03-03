@@ -27,12 +27,14 @@ function App() {
             <Route path="/" element={<Feed />} />
             <Route path="/profile" element={<Dashboard />} />
             <Route path="/editor" element={<Editor />} />
+            <Route path="/tags/:tag" element={<Feed />} />
             {/* <Route path="/posts" element={}></Route> */}
             <Route path="/posts/:id" element={<PostDetails />} />
           </>
         ) : (
           <>
             <Route path="/" element={<Feed />} />
+            <Route path="/tags/:tag" element={<Feed />} />
             <Route path="/login" element={<LoginSignUp />} />
             <Route path="/posts/:id" element={<PostDetails />} />
           </>

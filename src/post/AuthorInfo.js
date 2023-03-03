@@ -12,7 +12,6 @@ const AuthorInfo = ({ author }) => {
       <div className="author-details">
         <h3 className="author-username">@{author?.username}</h3>
         <p className="author-name">{author?.name}</p>
-        <p className="author-bio">{author?.bio}</p>
       </div>
     </div>
   );

@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const TagChip = ({ tag }) => {
+  const navigate = useNavigate();
+  const handleTagClick = () => {
+    tag = tag.startsWith("#") ? tag.slice(1) : tag;
+    navigate(`/tags/${tag}`, { state: { tag } });
+  };
   return (
     <div
       style={{
@@ -14,6 +20,7 @@ const TagChip = ({ tag }) => {
         fontWeight: "500",
         color: "#555555",
       }}
+      onClick={handleTagClick}
     >
       {tag}
     </div>
