@@ -2,8 +2,12 @@ import React from "react";
 import "./AuthorInfo.css";
 
 const AuthorInfo = ({ author }) => {
+  const handleAuthorClick = () => {
+    window.location.href = `/profile/${author?.username}`;
+  };
+
   return (
-    <div className="author-info">
+    <div className="author-info" onClick={handleAuthorClick}>
       <img
         src={author?.profile_picture}
         alt={author?.username}

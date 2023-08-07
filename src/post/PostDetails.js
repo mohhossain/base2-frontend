@@ -6,6 +6,7 @@ import "./PostDetails.css";
 import axios from "axios";
 import TagChip from "../editor/TagChip";
 import AuthorInfo from "./AuthorInfo";
+import CommentList from "./CommentList";
 
 function PostDetails({ html, title, tags }) {
   const { id } = useParams();
@@ -41,15 +42,13 @@ function PostDetails({ html, title, tags }) {
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-      }}
+      className="post-details-container"
+      
     >
-      <div></div>
-      <div className="container q-detail">
+      <div>
         <AuthorInfo author={question.user}></AuthorInfo>
+      </div>
+      <div className="post-container q-detail">
         <h1>{question ? question.title : null}</h1>
         <div className="post-details-date">{formattedDate}</div>
         <div className="tags">
@@ -71,6 +70,14 @@ function PostDetails({ html, title, tags }) {
         </div>
         {question?.content ? parse(question.content) : null}
       </div>
+      <div className="comment-section">
+        <h1>Comment Section</h1>
+        <CommentList
+          comments={question.answers}
+          aProp={"This is a prop"}
+        ></CommentList>
+      </div>
+      {console.log(question.answers, "Coming from here")}
     </div>
   );
 }
