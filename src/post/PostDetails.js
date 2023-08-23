@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import parse from "html-react-parser";
 import "./PostDetails.css";
 import axios from "axios";
@@ -74,7 +74,7 @@ function PostDetails({ html, title, tags }) {
         <h1>Comment Section</h1>
         <CommentList
           comments={question.answers}
-          aProp={"This is a prop"}
+          // aProp={"This is a prop"}
         ></CommentList>
       </div>
       {console.log(question.answers, "Coming from here")}

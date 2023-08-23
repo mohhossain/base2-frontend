@@ -1,0 +1,31 @@
+.comment-box{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: left;
+    /* margin-top: 1rem; */
+    /* justify-content: space-evenly; */
+    background-color: rgb(255, 255, 255);
+    /* padding: 80%; */
+    /* border-radius: 15px; */
+    max-width: 90%;
+    min-width: 0vw;
+    padding: 10px;
+    border: .5px solid #cccccc;
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1rem; */
+}
+#comment-break{
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 10px 0px;
+    border: none;
+}
+/* for mobile screen width will be 80vw */
+@media screen and (max-width: 960px) {
+    .comment-box{
+        min-width: 90vw;
+    }
+}
