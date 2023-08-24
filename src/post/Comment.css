@@ -1,31 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100;200;300;400;500;600;700;800;900&family=Encode+Sans+SC:wght@300&family=Encode+Sans:wght@300&family=Lato:wght@300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200&family=Source+Code+Pro&display=swap');
+.comment{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas: 
+    'comment author'
+    ;
+}
 .comment-box{
-
+    grid-area: 'comment';
     display: flex;
     flex-direction: column;
     align-items: flex-start !important;
     text-align: left;
-    /* margin-top: 1rem; */
-    /* justify-content: space-evenly; */
     background-color: rgb(255, 255, 255);
-    /* padding: 80%; */
-    /* border-radius: 15px; */
+    border-radius: 5px;
+    /* width: 100%; */
     max-width: 90%;
-    min-width: 0vw;
-    padding: 10px;
-    border: .5px solid #cccccc;
-    /* margin-top: 1rem; */
-    /* margin-bottom: 1rem; */
+    padding: 15px;
+    margin: 5px 2px;
+    border: 1.5px solid #000000;
+    align-self: stretch;
+    
 }
-#comment-break{
-    width: 100%;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 10px 0px;
+.comment-box p{
+    font-size: 1rem;
+    word-wrap: break-word;
+    margin: 0px;
+    font-family: 'Bitter', serif;
+}
+
+.comment p:nth-child(2){
+    font-size: .6rem;
+    color: #5a5a5a;
+    margin: 0px;
+    font-family: 'Bitter', serif;
+}
+
+.comment-author{
+    grid-area: 'author';
+    align-self:  center;
+    justify-self: flex-start; 
+}
+
+.comment-author img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+    border: 1px solid #000000;
+}
+
+
+#read-more-button{
+    background: none !important;
     border: none;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #000000;
+    margin: 5px 0px;
+    padding: 10px;
+}
+
+#read-more-button:hover{
+    box-shadow: none;
+}
+
+form{
+    /* width: 90vw; */
+    margin: 0px;
+    padding: 0px 0px 10px 0px !important;
+    /* width same as the column */
+    min-width: 26vw;
+}
+
+form textarea{
+    height: 100px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    font-family: 'Bitter', serif;
+    /* resize: none; */
+}
+
+form button{
+    background: none !important;
+    border: none;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #000000;
+    margin: 5px 0px;
+    padding: 10px;
+}
+form button:hover{
+    box-shadow: none;
 }
 /* for mobile screen width will be 80vw */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 650px) {
     .comment-box{
-        min-width: 90vw;
+        min-width: 90%;
+    }
+
+    form{
+        min-width: 95vw;
     }
 }

@@ -34,13 +34,13 @@ const Navbar = () => {
             base2
           </Link>
         </div>
-        <div className="navbar-search">
+        {/* <div className="navbar-search">
           <input
             type="text"
             placeholder="Search"
             className={isOpen ? "hidden" : ""}
           />
-        </div>
+        </div> */}
         <div className="navbar-links">
           {user ? (
             <>

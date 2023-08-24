@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300&family=Encode+Sans:wght@300&family=Lato:wght@300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&family=Source+Code+Pro&display=swap');
 
 .post-details-container{
+    /* max-height: 100%; */
     display: grid;
     grid-template-columns: .5fr 1.8fr 1fr;
     /* add a small top margin */ 
@@ -10,6 +11,7 @@
     grid-template-areas: 
     "user post comment"
     ;
+
 }
 
 .post-container{
@@ -19,6 +21,7 @@
     /* align-self: stretch; */
     /* max-width: 40%; */
     padding: 20px;
+    max-height: 80%;
 }
 /* for mobile screen it becomes column */
 @media screen and (max-width: 960px) {

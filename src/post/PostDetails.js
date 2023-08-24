@@ -41,10 +41,7 @@ function PostDetails({ html, title, tags }) {
   console.log(question);
 
   return (
-    <div
-      className="post-details-container"
-      
-    >
+    <div className="post-details-container">
       <div>
         <AuthorInfo author={question.user}></AuthorInfo>
       </div>
@@ -71,10 +68,9 @@ function PostDetails({ html, title, tags }) {
         {question?.content ? parse(question.content) : null}
       </div>
       <div className="comment-section">
-        <h1>Comment Section</h1>
         <CommentList
           comments={question.answers}
-          // aProp={"This is a prop"}
+          post_id={question.id}
         ></CommentList>
       </div>
       {console.log(question.answers, "Coming from here")}
