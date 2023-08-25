@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
 import "./Comment.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-function CommentList({ comments, post_id }) {
-  // console.log(post_id);
-
+function CommentList({ post_id }) {
   const [content, setContent] = useState("");
-  const [newComment, setNewComment] = useState({});
+  const [comments, setComments] = useState([]);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    console.log(post_id, "this is the post id");
+    axios
+      .get(`http://localhost:3000/answers/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setComments(res.data);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,20 +31,25 @@ function CommentList({ comments, post_id }) {
     // with the content of the comment and the post_id
 
     try {
-      const { data } = axios.post(
-        "http://127.0.0.1:3000/answers",
-        {
-          content: content,
-          question_id: post_id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+      axios
+        .post(
+          "http://127.0.0.1:3000/answers",
+          {
+            content: content,
+            question_id: post_id,
           },
-        }
-      );
-      console.log(data);
-      setNewComment(data);
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          // setNewComment(res.data);
+
+          setComments([res.data, ...comments]);
+        });
     } catch (error) {
       console.error(error);
     }

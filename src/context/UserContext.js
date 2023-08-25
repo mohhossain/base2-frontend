@@ -19,7 +19,7 @@ const useFetchUser = () => {
           },
         });
 
-        console.log(data.user);
+        // console.log(data.user);
         setUser(data.user);
       } catch (error) {
         console.error(error);

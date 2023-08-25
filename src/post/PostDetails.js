@@ -69,7 +69,7 @@ function PostDetails({ html, title, tags }) {
       </div>
       <div className="comment-section">
         <CommentList
-          comments={question.answers}
+          // comments={question.answers}
           post_id={question.id}
         ></CommentList>
       </div>
