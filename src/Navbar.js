@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { UserContext } from "./context/UserContext";
-import { BsPencilSquare } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 
 const Navbar = () => {
@@ -46,9 +45,14 @@ const Navbar = () => {
             <>
               <div className="profile">
                 <div className="profile-and-post">
-                  <a href="/editor">
-                    <BsPencilSquare className="create-icon" />
-                  </a>
+                  <button
+                    className="navbar-icon"
+                    onClick={() => {
+                      navigate("/editor");
+                    }}
+                  >
+                    ✏️
+                  </button>
                   <img
                     className="post-card-profile-picture"
                     onClick={toggleProfileDropdown}
@@ -101,16 +105,21 @@ const Navbar = () => {
         <div className="navbar-icons">
           {user ? (
             <>
-              <a href="/editor" className="navbar-icon create-post">
-                <BsPencilSquare />
-              </a>
+              <button
+                className="navbar-icon"
+                onClick={() => {
+                  navigate("/editor");
+                }}
+              >
+                ✏️
+              </button>
               <button onClick={toggleDrawer} className="navbar-icon">
                 &#9776;
               </button>
             </>
           ) : (
             <SlLogin
-              className="create-icon"
+              className="create-icon  navbar-icon"
               onClick={() => {
                 navigate(`/login`);
               }}

@@ -21,7 +21,7 @@
     /* align-self: stretch; */
     /* max-width: 40%; */
     padding: 20px;
-    max-height: 80%;
+    min-height: 80%;
 }
 /* for mobile screen it becomes column */
 @media screen and (max-width: 960px) {
@@ -79,7 +79,7 @@
 .comment-section{
     /* center everything */
     grid-area: "comment";
-    align-self: flex-end;
+    align-self: flex-start;
     display: flex;
     height: 100vh;
     flex-direction: column;

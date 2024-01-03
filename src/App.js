@@ -26,6 +26,8 @@ function App() {
           <>
             <Route path="/" element={<Feed />} />
             <Route path="/profile" element={<Dashboard />} />
+            {/* nested  profile/:userid route*/}
+            <Route path="/profile/:userid" element={<Dashboard />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/tags/:tag" element={<Feed />} />
             {/* <Route path="/posts" element={}></Route> */}
